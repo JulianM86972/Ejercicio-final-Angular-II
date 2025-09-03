@@ -1,0 +1,129 @@
+<div class="container">
+    <mat-toolbar color="primary">
+      <button mat-icon-button routerLink="/users">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span>Crear nuevo usuario</span>
+    </mat-toolbar>
+  
+    <div class="content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Informacion del usuario</mat-card-title>
+        </mat-card-header>
+  
+        <mat-card-content>
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-section">
+              <h3>Informacion personal</h3>
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Nombre completo</mat-label>
+                  <input matInput formControlName="name" required>
+                  <mat-error *ngIf="userForm.get('name')?.hasError('required')">
+                    Nombre obligatorio
+                  </mat-error>
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input matInput formControlName="username" required>
+                  <mat-error *ngIf="userForm.get('username')?.hasError('required')">
+                    Nombre de usuario obligatorio
+                  </mat-error>
+                </mat-form-field>
+              </div>
+  
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" type="email" required>
+                  <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+                    Email obligatorio
+                  </mat-error>
+                  <mat-error *ngIf="userForm.get('email')?.hasError('email')">
+                    Ingrese un correo valido
+                  </mat-error>
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Telefono</mat-label>
+                  <input matInput formControlName="phone" required>
+                  <mat-error *ngIf="userForm.get('phone')?.hasError('required')">
+                    Campo obligatorio
+                  </mat-error>
+                </mat-form-field>
+              </div>
+  
+              <mat-form-field appearance="outline" class="form-field full-width">
+                <mat-label>Website</mat-label>
+                <input matInput formControlName="website">
+              </mat-form-field>
+            </div>
+  
+            
+            <div class="form-section" formGroupName="address">
+              <h3>Direccion</h3>
+              <div class="form-row">
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Calle o carrera</mat-label>
+                  <input matInput formControlName="street" required>
+                  <mat-error *ngIf="userForm.get('address.street')?.hasError('required')">
+                    Campo obligatorio
+                  </mat-error>
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>Ciudad</mat-label>
+                  <input matInput formControlName="city" required>
+                  <mat-error *ngIf="userForm.get('address.city')?.hasError('required')">
+                    Campo obligatorio
+                  </mat-error>
+                </mat-form-field>
+              </div>
+  
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Codigo postal</mat-label>
+                <input matInput formControlName="zipcode" required>
+                <mat-error *ngIf="userForm.get('address.zipcode')?.hasError('required')">
+                  Campo obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            
+            <div class="form-section" formGroupName="company">
+              <h3>Compañia</h3>
+              <mat-form-field appearance="outline" class="form-field full-width">
+                <mat-label>Nombre de la empresa</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error *ngIf="userForm.get('company.name')?.hasError('required')">
+                  Campo obligatorio
+                </mat-error>
+              </mat-form-field>
+            </div>
+  
+            
+            <div class="form-actions">
+              <button mat-raised-button type="button" (click)="onCancel()">
+                Cancelar
+              </button>
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit"
+                [disabled]="userForm.invalid || loading">
+                {{ loading ? 'Creando...' : 'Crear Usuario' }}
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+

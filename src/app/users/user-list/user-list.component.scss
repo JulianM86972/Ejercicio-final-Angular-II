@@ -1,0 +1,29 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #b2d5f8;
+  }
+  
+  .content {
+    padding: 20px;
+    flex: 1;
+    background-color: bisque;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 16px;
+    border-collapse: collapse;
+  }
